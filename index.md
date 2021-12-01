@@ -1,37 +1,8 @@
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/cc6939/bottag/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/cc6939/bottag/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+html>
+  <head>
+   <meta charset="UTF-8">
+   <title> group 100$ by
+siam HTML </title>
+<div id="smart-button-container"> <div style="text-align: center;"> <div style="margin-bottom: 1.25rem;"> <p>group Line</p> <select id="item-options"><option value="group vip" price="100">group vip - 100 USD</option></select> <select style="visibility: hidden" id="quantitySelect"></select> </div> <div id="paypal-button-container"></div> </div> </div> <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script> <script> function initPayPalButton() { var shipping = 0; var itemOptions = document.querySelector("#smart-button-container #item-options"); var quantity = parseInt(); var quantitySelect = document.querySelector("#smart-button-container #quantitySelect"); if (!isNaN(quantity)) { quantitySelect.style.visibility = "visible"; } var orderDescription = 'group Line'; if(orderDescription === '') { orderDescription = 'Item'; } paypal.Buttons({ style: { shape: 'rect', color: 'gold', layout: 'vertical', label: 'checkout', }, createOrder: function(data, actions) { var selectedItemDescription = itemOptions.options[itemOptions.selectedIndex].value; var selectedItemPrice = parseFloat(itemOptions.options[itemOptions.selectedIndex].getAttribute("price")); var tax = (0 === 0 || false) ? 0 : (selectedItemPrice * (parseFloat(0)/100)); if(quantitySelect.options.length > 0) { quantity = parseInt(quantitySelect.options[quantitySelect.selectedIndex].value); } else { quantity = 1; } tax *= quantity; tax = Math.round(tax * 100) / 100; var priceTotal = quantity * selectedItemPrice + parseFloat(shipping) + tax; priceTotal = Math.round(priceTotal * 100) / 100; var itemTotalValue = Math.round((selectedItemPrice * quantity) * 100) / 100; return actions.order.create({ purchase_units: [{ description: orderDescription, amount: { currency_code: 'USD', value: priceTotal, breakdown: { item_total: { currency_code: 'USD', value: itemTotalValue, }, shipping: { currency_code: 'USD', value: shipping, }, tax_total: { currency_code: 'USD', value: tax, } } }, items: [{ name: selectedItemDescription, unit_amount: { currency_code: 'USD', value: selectedItemPrice, }, quantity: quantity }] }] }); }, onApprove: function(data, actions) { return actions.order.capture().then(function(orderData) { // Full available details console.log('Capture result', orderData, JSON.stringify(orderData, null, 2)); // Show a success message within this page, e.g. const element = document.getElementById('paypal-button-container'); element.innerHTML = ''; element.innerHTML = '<h3>Thank you for your payment!</h3>'; // Or go to another URL: actions.redirect('thank_you.html'); }); }, onError: function(err) { console.log(err); }, }).render('#paypal-button-container'); } initPayPalButton(); </script>
+    </head>
+</html>
